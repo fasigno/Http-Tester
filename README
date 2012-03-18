@@ -26,6 +26,8 @@ TO RUN
 cd ~/HTTP-Tester src
 ./HTTP-Tester
 
+Under GPLv2.
+
 Notes:
 *************************************************************************************************************************************************
 *-.BUG DI QT, class QNetworkAccessManager, il risettaggio manuale dell'header Accept-Encoding con "gzip" disabilita la compressione dei dati.   *
