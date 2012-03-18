@@ -1,0 +1,36 @@
+-.HTTP-Tester
+  Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
+
+  Luca Barili - 200316, Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+  luca.barili@studenti.unipr.it; filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+
+DEPENDENCIES
+----
+-Qt 4.7.4.
+-Gcc
+-QMake
+-Make
+
+TO COMPILE
+----
+-.Go to the folder containing the source code.
+
+cd ~/HTTP-Tester src
+qmake
+make
+
+TO RUN
+----
+-.Go to the folder containing the build.
+
+cd ~/HTTP-Tester src
+./HTTP-Tester
+
+Notes:
+*************************************************************************************************************************************************
+*-.BUG DI QT, class QNetworkAccessManager, il risettaggio manuale dell'header Accept-Encoding con "gzip" disabilita la compressione dei dati.   *
+*                                                                                                                                            	*
+*-.ERRORE QT, In testergui.cpp->updateCustomLine() - Line751, Parsing non corretto della linea newCustomLine.lastIndexOf("/");               	*
+* 																		*
+*-.La grandezza minima impostata della finestra principale viene considerata solo quando si clicca sul bordo per ridimensionarla su kde		*
+*************************************************************************************************************************************************
