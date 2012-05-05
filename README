@@ -1,8 +1,11 @@
 -.HTTP-Tester
   Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
 
-  Fabrizio Signoretti - 201216 (Github administrator), fabrizio.signoretti@studenti.unipr.it
-  Filippo Groppi - 201810, filippo.groppi@studenti.unipr.it;
+  Fabrizio Signoretti - 201216 (Github administrator)
+  Filippo Groppi - 201810
+
+  fabrizio.signoretti@studenti.unipr.it
+  filippo.groppi@studenti.unipr.it
 
 DEPENDENCIES
 ----
@@ -29,8 +32,9 @@ cd ~/HTTP-Tester src
 Under GPLv3.
 
 Notes:
-**************************************************************************************************************************************************
-*-.QT Bug, class QNetworkAccessManager, the manual reset of http header Accept-Encoding with value "gzip" disables the body data decompression.  *
-*  When executing the program you need to delete the header before any request, in that way the default header is setted on gzip and the body is *
-*  decompressed correctly.														         *
-**************************************************************************************************************************************************
+******************************************************************************************
+* QT Bug, class QNetworkAccessManager, the manual reset of http header Accept-Encoding   *
+* with value "gzip" disables the body data decompression. When executing the program you *
+* need to delete the header before any request, in that way the default header is setted *
+* on gzip and the body is decompressed correctly.														             *
+******************************************************************************************
