@@ -1,19 +1,20 @@
 /*
-HTTP-Tester - file: main.cpp - Compilatore: QT Creator - QT 4.7.4.
+HTTP-Tester - file: main.cpp - Compiler: QT Creator - QT 4.8.
 Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
 
-Luca Barili - 200316, Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
-luca.barili@studenti.unipr.it; filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+
+Code site: "github.com/fasigno/Http-Tester". Under GPLv3.
 */
 
 /*
-Note::
-**********************************************************************************************************************************************
-*-.BUG DI QT, class QNetworkAccessManager, il risettaggio manuale dell'header Accept-Encoding con "gzip" disabilita la compressione dei dati.*
-*                                                                                                                                            *
-*-.ERRORE QT, In testergui.cpp->updateCustomLine() - Line751, Parsing non corretto della linea newCustomLine.lastIndexOf("/");               *
-*                                                                                                                                            *
-**********************************************************************************************************************************************
+Notes:
+**************************************************************************************************************************************************
+*-.QT Bug, class QNetworkAccessManager, the manual reset of http header Accept-Encoding with value "gzip" disables the body data decompression.  *
+*  When executing the program you need to delete the header before any request, in that way the default header is setted on gzip and the body is *
+*  decompressed correctly.														         *
+**************************************************************************************************************************************************
 */
 
 #include <QtGui/QApplication>

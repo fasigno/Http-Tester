@@ -1,12 +1,12 @@
 -.HTTP-Tester
   Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
 
-  Luca Barili - 200316, Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
-  luca.barili@studenti.unipr.it; filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+  Fabrizio Signoretti - 201216 (Github administrator), fabrizio.signoretti@studenti.unipr.it
+  Filippo Groppi - 201810, filippo.groppi@studenti.unipr.it;
 
 DEPENDENCIES
 ----
--Qt 4.7.4.
+-Qt 4.8
 -Gcc
 -QMake
 -Make
@@ -16,7 +16,7 @@ TO COMPILE
 -.Go to the folder containing the source code.
 
 cd ~/HTTP-Tester src
-qmake
+qmake (on Fedora machines: qmake-qt4)
 make
 
 TO RUN
@@ -26,13 +26,11 @@ TO RUN
 cd ~/HTTP-Tester src
 ./HTTP-Tester
 
-Under GPLv2.
+Under GPLv3.
 
 Notes:
-*************************************************************************************************************************************************
-*-.BUG DI QT, class QNetworkAccessManager, il risettaggio manuale dell'header Accept-Encoding con "gzip" disabilita la compressione dei dati.   *
-*                                                                                                                                            	*
-*-.ERRORE QT, In testergui.cpp->updateCustomLine() - Line751, Parsing non corretto della linea newCustomLine.lastIndexOf("/");               	*
-* 																		*
-*-.La grandezza minima impostata della finestra principale viene considerata solo quando si clicca sul bordo per ridimensionarla su kde		*
-*************************************************************************************************************************************************
+**************************************************************************************************************************************************
+*-.QT Bug, class QNetworkAccessManager, the manual reset of http header Accept-Encoding with value "gzip" disables the body data decompression.  *
+*  When executing the program you need to delete the header before any request, in that way the default header is setted on gzip and the body is *
+*  decompressed correctly.														         *
+**************************************************************************************************************************************************

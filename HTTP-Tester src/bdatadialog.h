@@ -1,9 +1,11 @@
 /*
-HTTP-Tester - file: bdatadialog.h - Compilatore: QT Creator - QT 4.7.4.
+HTTP-Tester - file: bdatadialog.h - Compiler: QT Creator - QT 4.8.
 Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
 
-Luca Barili - 200316, Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
-luca.barili@studenti.unipr.it; filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+
+Code site: "github.com/fasigno/Http-Tester".
 */
 
 #ifndef BDATADIALOG_H

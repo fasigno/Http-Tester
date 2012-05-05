@@ -1,9 +1,11 @@
 /*
-HTTP-Tester - file: testergui.cpp - Compilatore: QT Creator - QT 4.7.4.
+HTTP-Tester - file: TesterGui.cpp - Compiler: QT Creator - QT 4.8.
 Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
 
-Luca Barili - 200316, Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
-luca.barili@studenti.unipr.it; filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
+
+Code site: "github.com/fasigno/Http-Tester".
 */
 
 #include "testergui.h"
@@ -405,13 +407,19 @@ void TesterGui::about()
 
     info.append("HTTP-Tester\n"
                 "Progetto d'esame - Telematica A,\n"
-                "Corso di laurea in ingegneria informatica.\n"
+                "Corso di laurea in ingegneria informatica.\n\n"
 
-                "\nLuca Barili - 200316, luca.barili@studenti.unipr.it;\n"
-                "Filippo Groppi - 201810, filippo.groppi@studenti.unipr.it;\n"
-                "Fabrizio Signoretti - 201216, fabrizio.signoretti@studenti.unipr.it\n"
+                "Fabrizio Signoretti - 201216\n"
 
-                "\nAmbiente: QT Creator - QT 4.7.4.\n\n Parma 2010/2011"
+                "Filippo Groppi - 201810\n"
+
+                "\nfabrizio.signoretti@studenti.unipr.it;\n"
+                "filippo.groppi@studenti.unipr.it;\n"
+
+                "\nSite: github.com/fasigno/Http-Tester\n"
+                "Under GPLv3.\n"
+
+                "\nAmbiente: QT Creator - QT 4.8 \n\n Parma 2010/2011"
                 );
 
     QMessageBox::information(this, tr("Info"), tr("%1").arg(info));
@@ -748,7 +756,7 @@ void TesterGui::updateCustomLine() {
 
     if (app.isEmpty() == false) {   //Se non è stato inserito un sito senza path, nè parametri.
 
-    int pos = /*newCustomLine.lastIndexOf("/");*/ 10; //La funzione non si comporta come dovrebbe, è stato fissato un valore numerico!
+    int pos = newCustomLine.lastIndexOf("/");
     pos = newCustomLine.length() - pos;
     newCustomLine.replace(pos ,1, app);
 
