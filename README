@@ -38,4 +38,4 @@ Notes:
 -.QT Bug, class QNetworkAccessManager, the manual reset of http header 
   Accept-Encoding with value "gzip" disables the body data decompression. 
   When executing the program you need to delete the header before any request, 
-  in that way the default header is setted on gzip and the body is decompressed correctly.														             
+  in that way the default header is set on gzip and the body is decompressed correctly.														             
