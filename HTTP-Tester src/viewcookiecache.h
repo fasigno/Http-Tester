@@ -1,11 +1,11 @@
 /*
-HTTP-Tester - file: viewcookiecache.h - Compiler: QT Creator - QT 4.8.
-Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
+HTTP-Tester - file: viewcookiecache.h - Compiler: QT Creator - QT 4.8.5
+Exam project - "Telematica A".
 
-Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+Filippo Groppi, Fabrizio Signoretti.
 filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
 
-Code site: "github.com/fasigno/Http-Tester".
+Code repository: "github.com/fasigno/Http-Tester". Under GPLv3.
 */
 
 #ifndef VIEWCOOKIECACHE_H

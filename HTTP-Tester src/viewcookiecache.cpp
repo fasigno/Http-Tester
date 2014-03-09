@@ -1,12 +1,13 @@
 /*
-HTTP-Tester - file: viewCookieCache.cpp - Compiler: QT Creator - QT 4.8.
-Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
+HTTP-Tester - file: viewcookiecache.cpp - Compiler: QT Creator - QT 4.8.5
+Exam project - "Telematica A".
 
-Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+Filippo Groppi, Fabrizio Signoretti.
 filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
 
-Code site: "github.com/fasigno/Http-Tester".
+Code repository: "github.com/fasigno/Http-Tester". Under GPLv3.
 */
+
 
 #include "viewcookiecache.h"
 #include "ui_viewcookiecache.h"
@@ -65,7 +66,7 @@ void viewCookieCache::setHttpFuncp(httpfuncs *tester) {
 
          } else {
 
-             app.append("No cookie setted");
+             app.append("No cookie set");
          }
 
      }

@@ -1,15 +1,16 @@
 /*
-HTTP-Tester - file: TesterGui.cpp - Compiler: QT Creator - QT 4.8.
-Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
+HTTP-Tester - file: testergui.cpp - Compiler: QT Creator - QT 4.8.5
+Exam project - "Telematica A".
 
-Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+Filippo Groppi, Fabrizio Signoretti.
 filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
 
-Code site: "github.com/fasigno/Http-Tester".
+Code repository: "github.com/fasigno/Http-Tester". Under GPLv3.
 */
 
 #include "testergui.h"
 //#include <QPlainTextDocumentLayout>
+#include <QDebug>
 
 TesterGui::TesterGui(QWidget *parent)
     : QWidget(parent)
@@ -26,9 +27,6 @@ TesterGui::TesterGui(QWidget *parent)
 
     QMenuBar *menu_bar = new QMenuBar; // Menù bar della finestra principale.
 
-    QMenu *menu_file = menu_bar->addMenu(tr("&File"));
-    QAction *action_exit = menu_file->addAction(tr("&Esci"));
-
     QMenu *menu_cache = menu_bar->addMenu(tr("&Cookie Cache"));
     QAction *action_cache = menu_cache->addAction(tr("&Cache settings"));
     QAction *action_viewCookie = menu_cache->addAction(tr("Vi&ew Cookies"));
@@ -36,11 +34,9 @@ TesterGui::TesterGui(QWidget *parent)
     QMenu *menu_interfaces = menu_bar->addMenu(tr("&Interfaces"));
     QAction *action_interfaces= menu_interfaces->addAction(tr("&Show Active Interfaces"));
 
-    QMenu *menu_help = menu_bar->addMenu(tr("&?"));
-    QAction *action_info = menu_help->addAction(tr("&Info"));
-
-    QObject::connect(action_exit, SIGNAL(activated()),
-                     this, SLOT(exitTester()));
+    QAction *action_info = new QAction(this);
+    action_info->setText("&?");
+    menu_bar->addAction(action_info);
 
     QObject::connect(action_info, SIGNAL(activated()),
                      this, SLOT(about()));
@@ -123,11 +119,9 @@ TesterGui::TesterGui(QWidget *parent)
     Htable = new TableModel(this); //Allocamento dell'oggetto tablemodel.
     rHeadersList->setModel(Htable);
 
-    //Solo prova
     QSortFilterProxyModel *proxyModel = new QSortFilterProxyModel(this);
     proxyModel->setSourceModel(Htable);
     //proxyModel->setDynamicSortFilter(true);
-    //Fine prova
 
     rHeadersList->setModel(proxyModel);
     //rHeadersList->setSortingEnabled(true);
@@ -206,7 +200,7 @@ TesterGui::TesterGui(QWidget *parent)
 
     // Layout inferiore contenente la response ::
     gridGroupBox2 = new QGroupBox(tr("Server-Response"), this);
-    gridGroupBox2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); //INUTILE PER IL MOMENTO.
+    gridGroupBox2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 
     QGridLayout *layout2 = new QGridLayout(this);
@@ -406,20 +400,22 @@ void TesterGui::about()
     QString info;
 
     info.append("HTTP-Tester\n"
-                "Progetto d'esame - Telematica A,\n"
-                "Corso di laurea in ingegneria informatica.\n\n"
+                "Exam Project - Telematica A,\n"
+                "Degree in software engineering.\n\n"
 
-                "Fabrizio Signoretti - 201216\n"
+                "Fabrizio Signoretti\n"
 
-                "Filippo Groppi - 201810\n"
+                "Filippo Groppi\n"
 
                 "\nfabrizio.signoretti@studenti.unipr.it;\n"
                 "filippo.groppi@studenti.unipr.it;\n"
 
-                "\nSite: github.com/fasigno/Http-Tester\n"
-                "Under GPLv3.\n"
+                "\nRepository: github.com/fasigno/Http-Tester\n"
 
-                "\nAmbiente: QT Creator - QT 4.8 \n\n Parma 2010/2011"
+
+                "\nEnvironment: QT Creator - QT 4.8.5 \n"
+                "Under GPLv3.\n"
+                "\n Parma 2010/2011"
                 );
 
     QMessageBox::information(this, tr("Info"), tr("%1").arg(info));
@@ -459,7 +455,7 @@ void TesterGui::requestFinished() {
     //Se rGHeaders == 0 non visualizza gli header.
 
     //Si deve impostare lo stato contrario a quello desiderato che poi lo slot inverte.
-    if (reBody->toPlainText() == "") {shBodyButton->setState(false); this->showhideBody();} else {shBodyButton->setState(true); this->showhideBody();}
+    if (reBody->toPlainText() == "") {shBodyButton->setState(false); this->showhideBody();} else {/*shBodyButton->setState(true); this->showhideBody();*/}
     if (reHeader->toPlainText() == "") {shHeaderButton->setState(false); this->showhideHeader();} else {shHeaderButton->setState(true); this->showhideHeader();}
 
     sendButton->setEnabled(true);  //Si riabilita il pulsante send alla fine della richiesta.
@@ -612,7 +608,7 @@ void TesterGui::sendRequest() {
 
     //Controllo casella url vuota o incompleta.
     if(urlLine->text().isEmpty() == true || QString::compare("http://", urlLine->text(), Qt::CaseInsensitive) == 0) {
-        QMessageBox::information(this, tr("Mancato inserimento dell'url"), tr("%1").arg("Url Mancante!"));
+        QMessageBox::information(this, tr("No url inserted"), tr("%1").arg("Missing url!"));
         return;}
 
     sendButton->setEnabled(false);      //Si disabilita il pulsante send all'invio della richiesta.
@@ -628,10 +624,14 @@ void TesterGui::sendRequest() {
 
         QByteArray head1, data1;
 
-        head1.append(Headers.at(i).first);
-        data1.append(Headers.at(i).second);
+        if (Headers.at(i).first != "Accept-Encoding" && Headers.at(i).second != "gzip") {
+            //Workaround see: https://bugs.webkit.org/show_bug.cgi?id=63696 ; https://bugreports.qt-project.org/browse/QTBUG-18239
+
+            head1.append(Headers.at(i).first);
+            data1.append(Headers.at(i).second);
 
         tester->setRequestHeader(head1, data1);
+        }
     }
 
     //Svolge la richiesta ::
@@ -675,7 +675,7 @@ void TesterGui::addQData() {
 void TesterGui::defaultHeaders(){ //I due punti, capire perchè g...
 
     this->addEntry("Connection", "Keep-Alive");
-    this->addEntry("Accept-Encoding", "gzip");
+    this->addEntry("Accept-Encoding", "*");
     this->addEntry("Accept-Language", "it-IT,en,*");
     this->addEntry("User-Agent", "Mozilla/5.0");
 
@@ -894,7 +894,7 @@ void TesterGui::adaptTextHeader() {
 //Slot per l'aggiunta dell'header host quando si aggiunge url della richiesta, viene inoltre aggiornata la requestLine.
 void TesterGui::addHostHeader() {
 
-        urlLine->setToolTip("Premere Invio al termine.");
+        //urlLine->setToolTip("Press Enter when finished."); Unuseful
 
         //Controllo coerenza campo url ::
 
@@ -1042,8 +1042,8 @@ void TesterGui::saveBodyDialog() {
 void TesterGui::saveHeaderDialog() {
 
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Headers to file"),
-                               "./Headers.text",
-                               tr("Text files (*.txt *.text)"));
+                               "./Headers.txt",
+                               tr("Text files (*.txt)"));
 
     //Per l'apertura di soli file :: QFileDialog::AnyFile;
 
@@ -1062,7 +1062,7 @@ void TesterGui::setStatusLine(QString status){
 //Slot che mostra il tooltip dell'urline.
 void TesterGui::showUrltt() {
 
-    QToolTip::showText(QPoint(urlLine->pos().x(),urlLine->pos().y()*2+10), "Premere invio al termine", urlLine);
+    QToolTip::showText(QPoint(urlLine->pos().x(),urlLine->pos().y()*2+10), "Press Enter when finished", urlLine);
 
 }
 

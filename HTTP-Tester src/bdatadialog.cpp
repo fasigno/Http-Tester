@@ -1,11 +1,11 @@
 /*
-HTTP-Tester - file: bdatadialog.cpp - Compiler: QT Creator - QT 4.8.
-Progetto d'esame - "Telematica A", corso di laurea in ingegneria informatica.
+HTTP-Tester - file: bdatadialog.cpp - Compiler: QT Creator - QT 4.8.5
+Exam project - "Telematica A".
 
-Filippo Groppi - 201810, Fabrizio Signoretti - 201216.
+Filippo Groppi, Fabrizio Signoretti.
 filippo.groppi@studenti.unipr.it; fabrizio.signoretti@studenti.unipr.it
 
-Code site: "github.com/fasigno/Http-Tester".
+Code repository: "github.com/fasigno/Http-Tester". Under GPLv3.
 */
 
 #include "bdatadialog.h"
@@ -51,7 +51,7 @@ bdataDialog::bdataDialog(QList< QPair<QString, QString> > bodydata, QWidget *par
     upLine->setFixedSize(25,25);
     downLine->setFixedSize(25,25);
 
-    text = new QLabel(this); text->setText("Accodamento dati alla richiesta ::");
+    text = new QLabel(this); text->setText("Add data to the request ::");
 
     QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok
                                       | QDialogButtonBox::Cancel);
