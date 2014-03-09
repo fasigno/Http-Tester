@@ -19,23 +19,23 @@ The exam report is available at this [link](http://dl.dropbox.com/u/22799853/Rel
 
 ###COMPILE
 
-Go to the folder containing the source code, from console type:
+Go to the folder containing the source code, from console type:    
 
-cd ~/HTTP-Tester src
-qmake (on Fedora machines: qmake-qt4)
-make
+    cd ~/HTTP-Tester src    
+    qmake (qmake-qt4 on some architectures lke Fedora)    
+    make
 
 ###RUN
-----
--.Go to the folder containing the build, from console type:
 
-cd ~/HTTP-Tester src
-./HTTP-Tester
+Go to the folder containing the build, from console type:
+
+    cd ~/HTTP-Tester src    
+    ./HTTP-Tester
 
 ======
 
 Idea and Design:  
-Fabrizio Signoretti - fasigno37@gmail.com
+Fabrizio Signoretti - fasigno37@gmail.com    
 Filippo Groppi - filippo.groppi@studenti.unipr.it
 
 This software is under GPLv3.
