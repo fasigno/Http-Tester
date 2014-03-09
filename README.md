@@ -22,7 +22,7 @@ The exam report is available at this [link](http://dl.dropbox.com/u/22799853/Rel
 Go to the folder containing the source code, from console type:    
 
     cd ~/HTTP-Tester src    
-    qmake (qmake-qt4 on some architectures lke Fedora)    
+    qmake (qmake-qt4 on some architectures like Fedora)    
     make
 
 ###RUN
